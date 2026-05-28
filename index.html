@@ -325,15 +325,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <div class="section-label">Timeline</div>
   <div class="section-title">最新のつぶやき</div>
   <div class="twitter-wrap">
-    <a class="twitter-timeline"
-       data-theme="dark"
-       data-chrome="noheader nofooter noborders transparent"
-       data-tweet-limit="5"
-       data-width="600"
-       href="https://twitter.com/chanhopuVT">
-      Tweets by chanhopuVT
-    </a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <iframe
+      src="https://syndication.twitter.com/srv/timeline-profile/screen-name/chanhopuVT?dnt=true&theme=dark&chrome=noheader%20nofooter%20noborders&tweet_limit=5"
+      width="100%"
+      height="600"
+      frameborder="0"
+      scrolling="no"
+      style="border-radius:16px;max-width:600px;width:100%;display:block;margin:0 auto;background:var(--surface);"
+      title="ちゃんほぷ Xタイムライン"
+      loading="lazy"
+    ></iframe>
   </div>
 </section>
 
