@@ -147,6 +147,23 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 @media(max-height:500px) and (orientation:landscape){#hero{min-height:auto;padding-top:calc(56px + var(--safe-top));padding-bottom:40px;}.hero-deco{display:none;}}
 @media(min-width:1440px){section{padding-left:max(10vw,calc((100vw - 1200px)/2));padding-right:max(10vw,calc((100vw - 1200px)/2));}.divider{margin-left:max(10vw,calc((100vw - 1200px)/2));margin-right:max(10vw,calc((100vw - 1200px)/2));}nav{padding-left:max(5vw,calc((100vw - 1200px)/2));padding-right:max(5vw,calc((100vw - 1200px)/2));}footer{padding-left:max(10vw,calc((100vw - 1200px)/2));padding-right:max(10vw,calc((100vw - 1200px)/2));}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* SCHEDULE BANNER */
+.schedule-banner-card{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:clamp(20px,4vw,32px) clamp(24px,4vw,40px);transition:all .3s;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;}
+.schedule-banner-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 0% 50%,rgba(200,162,216,.07),transparent 60%);pointer-events:none;}
+.schedule-banner-card:hover,.schedule-banner-card:active{border-color:rgba(200,162,216,.5);transform:translateY(-3px);box-shadow:0 12px 40px rgba(200,162,216,.12);}
+.schedule-banner-inner{display:flex;align-items:center;gap:clamp(16px,3vw,28px);position:relative;z-index:1;}
+.schedule-banner-icon{font-size:clamp(2rem,5vw,3rem);flex-shrink:0;animation:float 5s ease-in-out infinite;}
+.schedule-banner-text{flex:1;min-width:0;}
+.schedule-banner-title{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(1rem,3vw,1.4rem);color:var(--text);margin-bottom:6px;}
+.schedule-banner-sub{font-size:clamp(.72rem,1.8vw,.85rem);color:var(--text2);line-height:1.7;}
+.schedule-banner-arrow{font-size:clamp(1.2rem,3vw,1.8rem);color:var(--accent1);transition:transform .25s;flex-shrink:0;}
+.schedule-banner-card:hover .schedule-banner-arrow{transform:translateX(6px);}
+/* TWITTER */
+.twitter-wrap{display:flex;justify-content:center;}
+.twitter-wrap .twitter-timeline{border-radius:16px!important;overflow:hidden;}
+@media(max-width:600px){.schedule-banner-arrow{display:none;}}
+
 </style>
 </head>
 <body>
@@ -156,6 +173,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <ul class="nav-links">
     <li><a href="#profile">About</a></li>
     <li><a href="#links">Links</a></li>
+    <li><a href="./schedule.html">Schedule</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
@@ -167,6 +185,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <a href="#hero" class="drawer-link">Home</a>
   <a href="#profile" class="drawer-link">About</a>
   <a href="#links" class="drawer-link">Links</a>
+  <a href="./schedule.html" class="drawer-link">Schedule</a>
   <a href="#gallery" class="drawer-link">Gallery</a>
 </div>
 
@@ -278,6 +297,43 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
       <div class="link-info"><div class="link-name">Marshmallow</div><div class="link-desc">お便り・質問はこちら</div></div>
       <div class="link-arrow" aria-hidden="true">→</div>
     </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCHEDULE BANNER -->
+<section id="schedule-banner" style="background:var(--bg);padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);">
+  <div class="section-label">Schedule</div>
+  <div class="section-title">ライブ配信予定</div>
+  <a href="./schedule.html" class="schedule-banner-card">
+    <div class="schedule-banner-inner">
+      <div class="schedule-banner-icon">📅</div>
+      <div class="schedule-banner-text">
+        <div class="schedule-banner-title">配信スケジュールはこちら！</div>
+        <div class="schedule-banner-sub">最新のライブ予定・アーカイブをチェックしてな🐱</div>
+      </div>
+      <div class="schedule-banner-arrow">→</div>
+    </div>
+  </a>
+</section>
+
+<div class="divider"></div>
+
+<!-- TWITTER TIMELINE -->
+<section id="twitter-timeline" style="background:var(--bg2);padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);">
+  <div class="section-label">Timeline</div>
+  <div class="section-title">最新のつぶやき</div>
+  <div class="twitter-wrap">
+    <a class="twitter-timeline"
+       data-theme="dark"
+       data-chrome="noheader nofooter noborders transparent"
+       data-tweet-limit="5"
+       data-width="600"
+       href="https://twitter.com/chanhopuVT">
+      Tweets by chanhopuVT
+    </a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </section>
 
