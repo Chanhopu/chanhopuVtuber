@@ -160,20 +160,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   </div>
   <!-- ============================================
        🐱 ヒーロー（トップ）の右側キャラ画像を変更したい場合はここを編集！
-
-       【画像ファイルをGitHubに置く場合】
-         1. 画像ファイルを例えば "chara.png" という名前でリポジトリにアップロード
-         2. 下の <svg ...> ～ </svg> を丸ごと以下に書き換えてな：
-            <img src="./chara.png" alt="ちゃんほぷ" class="hero-deco">
-
-       【外部URLを使う場合】
-            <img src="https://example.com/chara.png" alt="ちゃんほぷ" class="hero-deco">
-
-       【今のSVGイラストのまま使う場合】→ 何も変えなくてOK！
+       src="./chanhopu.png" のファイル名をGitHubに置いた画像に合わせてな！
        ============================================ -->
-  <svg class="hero-deco" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <img src="./chanhopu.png" alt="ちゃんほぷ" class="hero-deco">
-  </svg>
+  <img src="./chanhopu.png" alt="ちゃんほぷ" class="hero-deco">
   <div class="scroll-line" aria-hidden="true">Scroll</div>
 </section>
 
@@ -184,27 +173,27 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <div class="section-title">プロフィール</div>
   <div class="profile-grid">
     <div class="profile-card">
-
       <!-- ============================================
-           🐱 アイコン画像を変更したい場合はここを編集！
-           
-           【絵文字のまま使う場合】→ 今のまま何もしなくてOK！
-           
-           【画像に変更する場合】↓ このdivの中身を以下に書き換えてな：
-           
-           <img src="ここに画像URLを貼り付け" alt="ちゃんほぷアイコン">
-           
-           例：
-           <img src="https://example.com/icon.png" alt="ちゃんほぷアイコン">
-           
-           GitHubに画像ファイルを直接置く場合：
-           <img src="./icon.png" alt="ちゃんほぷアイコン">
-           ↑ index.htmlと同じフォルダにicon.pngを置いたとき
+           🐱 プロフィールアイコンを変更したい場合はここを編集！
+           src="./chanhopu.png" のファイル名をGitHubに置いた画像に合わせてな！
            ============================================ -->
       <div class="profile-avatar" aria-hidden="true"><img src="./chanhopu.png" alt="ちゃんほぷアイコン"></div>
-
-    </div><!-- /.profile-card -->
-
+      <div class="profile-name">ちゃんほぷ</div>
+      <div class="profile-name-en">chanhopu</div>
+      <div class="profile-badges">
+        <span class="badge highlight">猫系ケモノ</span>
+        <span class="badge highlight">中性的</span>
+        <span class="badge">Femboy</span>
+        <span class="badge">関西弁</span>
+        <span class="badge">個人勢VTuber</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-num">🐱</span><span class="stat-label">Cat / 猫耳</span></div>
+        <div class="stat"><span class="stat-num">🎮</span><span class="stat-label">配信者</span></div>
+        <div class="stat"><span class="stat-num">🌸</span><span class="stat-label">Furry / Kemono</span></div>
+        <div class="stat"><span class="stat-num">📍</span><span class="stat-label">関西出身</span></div>
+      </div>
+    </div>
     <div class="profile-info">
       <div class="info-block">
         <h3>自己紹介</h3>
