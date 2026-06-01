@@ -57,7 +57,7 @@ main{padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);}
 
 /* ── おすすめ強調 (Femboy themed) ── */
 .recommend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:clamp(20px,3.5vw,32px);}
-.rec-card{position:relative;background:linear-gradient(165deg,var(--surface) 0%,#1f1a2a 100%);border:1.5px solid rgba(240,192,208,.3);border-radius:24px;overflow:hidden;text-decoration:none;color:var(--text);transition:all .35s cubic-bezier(.2,.8,.2,1);display:block;-webkit-tap-highlight-color:transparent;}
+.rec-card{cursor:pointer;position:relative;background:linear-gradient(165deg,var(--surface) 0%,#1f1a2a 100%);border:1.5px solid rgba(240,192,208,.3);border-radius:24px;overflow:hidden;text-decoration:none;color:var(--text);transition:all .35s cubic-bezier(.2,.8,.2,1);display:block;-webkit-tap-highlight-color:transparent;}
 .rec-card::after{content:"";position:absolute;inset:0;border-radius:24px;padding:1.5px;background:linear-gradient(135deg,rgba(240,192,208,.5),rgba(200,162,216,.4),rgba(168,216,200,.45));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;transition:opacity .35s;pointer-events:none;}
 .rec-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(240,192,208,.18),0 8px 24px rgba(200,162,216,.14);}
 .rec-card:hover::after{opacity:1;}
@@ -110,6 +110,19 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 @media(max-width:600px){footer{flex-direction:column;align-items:flex-start;}}
 @media(min-width:1440px){main,footer,.page-hero{padding-left:max(10vw,calc((100vw - 1200px)/2));padding-right:max(10vw,calc((100vw - 1200px)/2));}nav{padding-left:max(5vw,calc((100vw - 1200px)/2));padding-right:max(5vw,calc((100vw - 1200px)/2));}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* ── VIDEO MODAL ── */
+.video-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,40px);background:rgba(8,8,12,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;}
+.video-modal.open{opacity:1;visibility:visible;}
+.video-modal-inner{position:relative;width:100%;max-width:960px;animation:modalPop .35s cubic-bezier(.2,.8,.2,1);}
+@keyframes modalPop{from{opacity:0;transform:scale(.94) translateY(12px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.video-modal-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:1.5px solid rgba(240,192,208,.3);box-shadow:0 24px 80px rgba(240,192,208,.18),0 8px 32px rgba(0,0,0,.5);}
+.video-modal-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.video-modal-close{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#f0c0d0,#c8a2d8);border:none;color:#1a1a28;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(240,192,208,.5);transition:transform .2s;-webkit-tap-highlight-color:transparent;z-index:2;}
+.video-modal-close:hover{transform:rotate(90deg) scale(1.08);}
+.video-modal-title{margin-top:18px;text-align:center;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(.9rem,2.2vw,1.1rem);color:var(--text);line-height:1.5;}
+@media(max-width:600px){.video-modal-close{top:-10px;right:4px;width:38px;height:38px;font-size:1.2rem;}}
+
 </style>
 </head>
 <body>
@@ -147,7 +160,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 
        コピペ用テンプレ ↓
        ──────────────────────────────
-       <a href="YouTubeのURL" target="_blank" rel="noopener" class="rec-card">
+       <div class="rec-card" data-video="動画ID" role="button" tabindex="0">
          <div class="rec-thumb-wrap">
            <img src="https://img.youtube.com/vi/動画ID/maxresdefault.jpg" alt="タイトル" class="rec-thumb">
            <div class="rec-ribbon">おすすめ</div>
@@ -160,7 +173,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
              <span class="rec-meta-item date">2024年XX月XX日</span>
            </div>
          </div>
-       </a>
+       </div>
+       ※ data-video="動画ID" の動画IDは watch?v= の後ろの文字だけ！
        ──────────────────────────────
        ※ 動画IDは watch?v= の後ろの文字だけ！(&以降は消す)
        ※ 再生数(views)は手動で書いてな。消したいときはその<span>ごと削除！
@@ -171,7 +185,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 
   <div class="recommend-grid">
 
-    <a href="https://www.youtube.com/watch?v=W26x7pa31TA" target="_blank" rel="noopener" class="rec-card">
+    <div class="rec-card" data-video="W26x7pa31TA" role="button" tabindex="0">
       <div class="rec-thumb-wrap">
         <img src="https://img.youtube.com/vi/W26x7pa31TA/maxresdefault.jpg" alt="【新人VTuber】 VTuberデビュー配信！ ちゃんほぷです！🐈✨" class="rec-thumb">
         <div class="rec-ribbon">おすすめ</div>
@@ -184,9 +198,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
           <span class="rec-meta-item date">2025年9月20日</span>
         </div>
       </div>
-    </a>
+    </div>
 
-    <a href="https://www.youtube.com/watch?v=fjTeLuKqpTA" target="_blank" rel="noopener" class="rec-card">
+    <div class="rec-card" data-video="fjTeLuKqpTA" role="button" tabindex="0">
       <div class="rec-thumb-wrap">
         <img src="https://img.youtube.com/vi/fjTeLuKqpTA/maxresdefault.jpg" alt="【CoD:BO7/ Warzone 参加型】ゲリラ配信！ CODで一緒に遊ぼ！ 初見さんいらっしゃーい🐈✨ #新人vtuber" class="rec-thumb">
         <div class="rec-ribbon">おすすめ</div>
@@ -199,7 +213,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
           <span class="rec-meta-item date">2026年5月31日</span>
         </div>
       </div>
-    </a>
+    </div>
 
   </div>
 
@@ -230,6 +244,54 @@ const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersec
 document.querySelectorAll(".rec-card").forEach((el,i)=>{el.style.opacity="0";el.style.transform="translateY(18px)";el.style.transition="opacity .55s ease, transform .55s ease";el.style.transitionDelay=(i*.08)+"s";obs.observe(el);});
 
 
+
+// ── 動画モーダル ──
+(function(){
+  const modal = document.getElementById("videoModal");
+  const frame = document.getElementById("videoModalFrame");
+  const titleEl = document.getElementById("videoModalTitle");
+  const closeBtn = document.getElementById("videoModalClose");
+  if(!modal) return;
+
+  function openModal(videoId, title){
+    if(!videoId || videoId === "動画ID") return;
+    frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + videoId +
+      '?autoplay=1&rel=0" title="' + (title||"") + '" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    titleEl.textContent = title || "";
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(){
+    modal.classList.remove("open");
+    frame.innerHTML = "";        // 再生停止
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".rec-card[data-video]").forEach(card => {
+    const vid = card.getAttribute("data-video");
+    const titleNode = card.querySelector(".rec-title");
+    const title = titleNode ? titleNode.textContent.trim() : "";
+    card.addEventListener("click", () => openModal(vid, title));
+    card.addEventListener("keydown", e => {
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openModal(vid, title); }
+    });
+  });
+
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
+  document.addEventListener("keydown", e => { if(e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+})();
+
 </script>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="動画プレイヤー">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" aria-label="閉じる">&times;</button>
+    <div class="video-modal-frame" id="videoModalFrame"></div>
+    <div class="video-modal-title" id="videoModalTitle"></div>
+  </div>
+</div>
+
 </body>
 </html>
