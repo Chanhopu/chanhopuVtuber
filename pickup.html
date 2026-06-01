@@ -231,6 +231,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   </ul>
 </footer>
 
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="動画プレイヤー">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" aria-label="閉じる">&times;</button>
+    <div class="video-modal-frame" id="videoModalFrame"></div>
+
 <script>
 const hamburger = document.getElementById("hamburger");
 const drawer    = document.getElementById("drawer");
@@ -284,11 +290,6 @@ document.querySelectorAll(".rec-card").forEach((el,i)=>{el.style.opacity="0";el.
 
 </script>
 
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="動画プレイヤー">
-  <div class="video-modal-inner">
-    <button class="video-modal-close" id="videoModalClose" aria-label="閉じる">&times;</button>
-    <div class="video-modal-frame" id="videoModalFrame"></div>
     <div class="video-modal-title" id="videoModalTitle"></div>
   </div>
 </div>
