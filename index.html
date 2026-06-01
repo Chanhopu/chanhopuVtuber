@@ -61,9 +61,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .orb1{width:clamp(160px,30vw,320px);height:clamp(160px,30vw,320px);background:rgba(200,162,216,.13);top:10%;right:12%;}
 .orb2{width:clamp(100px,18vw,200px);height:clamp(100px,18vw,200px);background:rgba(168,216,200,.10);bottom:20%;right:28%;animation-delay:-3s;}
 .orb3{width:clamp(80px,12vw,150px);height:clamp(80px,12vw,150px);background:rgba(240,192,208,.09);top:55%;left:5%;animation-delay:-5s;}
-@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-22px) scale(1.04);}}
+
 .hero-content{position:relative;z-index:1;max-width:620px;width:100%;}
 .hero-name{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:clamp(3rem,12vw,7rem);line-height:.95;letter-spacing:-.02em;animation:fadeUp .8s .15s ease both;}
+.hero-logo{display:block;width:clamp(280px,42vw,560px);max-width:100%;height:auto;margin-bottom:clamp(8px,2vw,16px);animation:fadeUp .8s .15s ease both;filter:drop-shadow(0 8px 32px rgba(200,162,216,.25));}
 .hero-name span{display:block;background:linear-gradient(135deg,var(--accent1) 0%,var(--accent3) 50%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{margin-top:clamp(14px,3vw,22px);font-size:clamp(.82rem,2.2vw,.95rem);color:var(--text2);line-height:2;animation:fadeUp .8s .3s ease both;}
 .hero-kansai{display:inline-block;margin-top:14px;font-size:clamp(.9rem,2.5vw,1.05rem);color:var(--accent3);font-weight:400;animation:fadeUp .8s .45s ease both;}
@@ -74,6 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);}
 .btn-ghost:hover,.btn-ghost:active{border-color:var(--accent1);color:var(--accent1);}
 .hero-deco{position:absolute;right:6vw;top:50%;transform:translateY(-50%);opacity:.2;width:clamp(200px,30vw,420px);animation:fadeUp 1s .5s ease both,float 10s ease-in-out infinite;pointer-events:none;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-22px) scale(1.04);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 .scroll-line{position:absolute;bottom:clamp(24px,5vw,40px);left:clamp(20px,10vw,10vw);display:flex;align-items:center;gap:12px;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2);animation:fadeUp 1s 1s ease both;}
 .scroll-line::before{content:"";width:40px;height:1px;background:linear-gradient(90deg,var(--accent1),transparent);animation:expand 2s ease-in-out infinite;}
@@ -86,7 +88,7 @@ section{padding:clamp(60px,10vw,100px) clamp(20px,10vw,10vw);}
 .profile-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(28px,5vw,64px);align-items:start;}
 .profile-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:clamp(24px,4vw,40px);position:relative;overflow:hidden;}
 .profile-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 0%,rgba(200,162,216,.07),transparent 60%);pointer-events:none;}
-.profile-avatar{width:clamp(72px,12vw,100px);height:clamp(72px,12vw,100px);border-radius:50%;background:linear-gradient(135deg,var(--accent1),var(--accent3),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:clamp(2rem,4vw,3rem);margin-bottom:20px;box-shadow:0 0 40px rgba(200,162,216,.3);animation:float 6s ease-in-out infinite;overflow:hidden;}
+.profile-avatar{width:clamp(72px,12vw,100px);height:clamp(72px,12vw,100px);border-radius:50%;background:linear-gradient(135deg,var(--accent1),var(--accent3),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:clamp(2rem,4vw,3rem);margin-bottom:20px;box-shadow:0 0 40px rgba(200,162,216,.3);overflow:hidden;animation:float 6s ease-in-out infinite;}
 .profile-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
 .profile-name{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(1.3rem,3.5vw,1.8rem);margin-bottom:4px;}
 .profile-name-en{font-size:.72rem;letter-spacing:.2em;color:var(--accent1);text-transform:uppercase;margin-bottom:18px;}
@@ -125,7 +127,7 @@ section{padding:clamp(60px,10vw,100px) clamp(20px,10vw,10vw);}
 .gallery-note-icon{font-size:1.4rem;flex-shrink:0;line-height:1.6;}
 .gallery-cta{display:flex;flex-direction:column;align-items:center;gap:20px;padding:clamp(40px,8vw,64px) clamp(20px,5vw,40px);background:var(--surface);border:1px solid var(--border);border-radius:24px;text-align:center;position:relative;overflow:hidden;}
 .gallery-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 0%,rgba(200,162,216,.07),transparent 60%);pointer-events:none;}
-.gallery-paws{font-size:clamp(2rem,6vw,3rem);animation:float 5s ease-in-out infinite;display:block;}
+.gallery-paws{font-size:clamp(2rem,6vw,3rem);display:block;animation:float 5s ease-in-out infinite;}
 .gallery-cta-title{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(1.1rem,3.5vw,1.5rem);line-height:1.5;}
 .gallery-cta-body{font-size:clamp(.78rem,2vw,.88rem);color:var(--text2);line-height:2;max-width:460px;position:relative;z-index:1;}
 .gallery-cta-body strong{color:var(--accent1);font-weight:700;}
@@ -173,7 +175,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <ul class="nav-links">
     <li><a href="#profile">About</a></li>
     <li><a href="#links">Links</a></li>
-    <li><a href="./schedule.html">Schedule</a></li>
+    <li><a href="./schedule.html">Pick Up</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
@@ -195,7 +197,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
   <div class="hero-content">
-    <h1 class="hero-name"><span>ちゃん</span><span>ほぷ</span></h1>
+    <!-- ============================================
+         🐱 ロゴ画像。src="./logo.png" をリポジトリのファイル名に合わせてな！
+         ロゴを使わず文字に戻したいときは下の <img> を消して、
+         <h1 class="hero-name"> のコメントアウトを外せばOK！
+         ============================================ -->
+    <img src="./logo.png" alt="ちゃんほぷ ロゴ" class="hero-logo">
+    <!-- <h1 class="hero-name"><span>ちゃん</span><span>ほぷ</span></h1> -->
     <p class="hero-sub">猫獣人の中性的な関西弁ケモノVTuber。<br>関西からお届けする、ちょっとふわふわな日常。</p>
     <p class="hero-kansai">「こんほぷ！」🐈✨</p>
     <div class="hero-btns">
@@ -304,14 +312,14 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 
 <!-- SCHEDULE BANNER -->
 <section id="schedule-banner" style="background:var(--bg);padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);">
-  <div class="section-label">Schedule</div>
-  <div class="section-title">ライブ配信予定</div>
+  <div class="section-label">Pick Up</div>
+  <div class="section-title">おすすめ動画</div>
   <a href="./schedule.html" class="schedule-banner-card">
     <div class="schedule-banner-inner">
-      <div class="schedule-banner-icon">📅</div>
+      <div class="schedule-banner-icon">⭐</div>
       <div class="schedule-banner-text">
-        <div class="schedule-banner-title">配信スケジュールはこちら！</div>
-        <div class="schedule-banner-sub">最新のライブ予定・アーカイブをチェックしてな🐱</div>
+        <div class="schedule-banner-title">ちゃんほぷのおすすめ動画はこちら！</div>
+        <div class="schedule-banner-sub">イチオシ動画をピックアップしたで〜！見てな🐈💕</div>
       </div>
       <div class="schedule-banner-arrow">→</div>
     </div>
@@ -407,6 +415,8 @@ document.querySelectorAll(".link-card, .profile-card, .info-block, .gallery-cta,
   if (el.classList.contains("link-card")) el.style.transitionDelay = (i * .07) + "s";
   obs.observe(el);
 });
+
+
 </script>
 </body>
 </html>
