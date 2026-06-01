@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0d0d12">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>配信スケジュール | ちゃんほぷ</title>
-<meta name="description" content="ちゃんほぷのYouTubeライブ配信予定・アーカイブ一覧">
-<meta property="og:title" content="配信スケジュール | ちゃんほぷ">
-<meta property="og:description" content="ちゃんほぷのYouTubeライブ配信予定・アーカイブ一覧">
+<title>おすすめ動画 | ちゃんほぷ</title>
+<meta name="description" content="ちゃんほぷのおすすめYouTube動画ピックアップ！">
+<meta property="og:title" content="おすすめ動画 | ちゃんほぷ">
+<meta property="og:description" content="ちゃんほぷのおすすめYouTube動画ピックアップ！">
 <meta property="og:image" content="https://chanhopu.github.io/chanhopuVtuber/chanhopu.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;700;900&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@200;400;700&display=swap" rel="stylesheet">
@@ -32,6 +32,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .nav-drawer.open{display:flex;}
 .nav-drawer a{color:var(--text);text-decoration:none;font-size:1.6rem;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;letter-spacing:.1em;transition:color .2s;-webkit-tap-highlight-color:transparent;}
 .nav-drawer a:hover{color:var(--accent1);}
+
 @keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-22px) scale(1.04);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 .page-hero{min-height:40svh;display:flex;align-items:flex-end;padding:calc(clamp(80px,15vw,140px) + 20px) clamp(20px,10vw,10vw) clamp(40px,6vw,60px);position:relative;overflow:hidden;}
@@ -53,6 +54,31 @@ main{padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);}
 .update-guide strong{color:var(--accent2);}
 .update-guide code{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:2px 8px;font-size:.78rem;color:var(--accent1);font-family:monospace;}
 
+
+/* ── おすすめ強調 (Femboy themed) ── */
+.recommend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:clamp(20px,3.5vw,32px);}
+.rec-card{position:relative;background:linear-gradient(165deg,var(--surface) 0%,#1f1a2a 100%);border:1.5px solid rgba(240,192,208,.3);border-radius:24px;overflow:hidden;text-decoration:none;color:var(--text);transition:all .35s cubic-bezier(.2,.8,.2,1);display:block;-webkit-tap-highlight-color:transparent;}
+.rec-card::after{content:"";position:absolute;inset:0;border-radius:24px;padding:1.5px;background:linear-gradient(135deg,rgba(240,192,208,.5),rgba(200,162,216,.4),rgba(168,216,200,.45));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;transition:opacity .35s;pointer-events:none;}
+.rec-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(240,192,208,.18),0 8px 24px rgba(200,162,216,.14);}
+.rec-card:hover::after{opacity:1;}
+.rec-card:active{transform:translateY(-2px);}
+.rec-thumb-wrap{position:relative;overflow:hidden;}
+.rec-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--surface2);transition:transform .5s ease;}
+.rec-card:hover .rec-thumb{transform:scale(1.06);}
+.rec-thumb-wrap::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,18,.6) 0%,transparent 40%);z-index:1;pointer-events:none;}
+.rec-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.85);width:64px;height:64px;border-radius:50%;background:rgba(240,192,208,.92);display:flex;align-items:center;justify-content:center;z-index:2;opacity:0;transition:all .35s;box-shadow:0 4px 24px rgba(240,192,208,.5);}
+.rec-card:hover .rec-play{opacity:1;transform:translate(-50%,-50%) scale(1);}
+.rec-play svg{width:26px;height:26px;fill:#1a1a28;margin-left:3px;}
+.rec-ribbon{position:absolute;top:14px;left:-2px;z-index:3;display:inline-flex;align-items:center;gap:6px;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 16px 7px 14px;background:linear-gradient(135deg,#f0c0d0,#c8a2d8);color:#1a1a28;border-radius:0 100px 100px 0;box-shadow:0 4px 16px rgba(240,192,208,.4);}
+.rec-ribbon::before{content:"⭐";font-size:.8rem;}
+.rec-body{padding:clamp(18px,3vw,24px);position:relative;z-index:1;}
+.rec-title{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(.92rem,2.3vw,1.08rem);line-height:1.55;margin-bottom:12px;}
+.rec-meta{display:flex;align-items:center;gap:14px;font-size:clamp(.68rem,1.6vw,.76rem);color:var(--text2);}
+.rec-meta-item{display:flex;align-items:center;gap:5px;}
+.rec-meta-item.views{color:var(--accent3);font-weight:700;}
+.rec-meta-item.views::before{content:"▶";font-size:.7rem;}
+.rec-meta-item.date::before{content:"🕐";font-size:.8rem;}
+
 /* ── SCHEDULE CARDS ── */
 .schedule-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:clamp(16px,3vw,24px);}
 .schedule-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--text);transition:all .3s;display:block;-webkit-tap-highlight-color:transparent;position:relative;}
@@ -72,7 +98,7 @@ main{padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);}
 .card-date{font-size:clamp(.68rem,1.6vw,.75rem);color:var(--text2);display:flex;align-items:center;gap:6px;}
 .card-date::before{content:"🕐";font-size:.85rem;}
 .card-empty{text-align:center;padding:clamp(40px,8vw,64px) 20px;color:var(--text2);font-size:clamp(.82rem,2vw,.92rem);line-height:2;}
-.card-empty span{display:block;font-size:2.5rem;margin-bottom:16px;animation:float 5s ease-in-out infinite;}
+.card-empty span{display:block;font-size:2.5rem;margin-bottom:16px;}
 
 footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40px,8vw,56px) clamp(20px,10vw,10vw) calc(clamp(32px,6vw,40px) + var(--safe-bottom));display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
 .footer-name{font-family:"DM Serif Display",serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--accent1);margin-bottom:6px;}
@@ -108,102 +134,70 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="page-hero-content">
-    <div class="page-label">Schedule</div>
-    <h1 class="page-title">配信スケジュール</h1>
-    <p class="page-sub">最新のライブ予定・アーカイブはこちらやで〜！🐱✨</p>
+    <div class="page-label">Pick Up</div>
+    <h1 class="page-title">おすすめ動画</h1>
+    <p class="page-sub">ちゃんほぷのイチオシ動画を集めたで〜！まずはここから見てな🐈💕</p>
   </div>
 </div>
 
 <main>
 
-  <!-- 更新方法ガイド -->
-  <!-- <div class="update-guide">
-    💡 <strong>更新方法：</strong>
-    このファイル（<code>schedule.html</code>）をテキストエディタで開いて、
-    下の「配信予定を追加するにはここを編集！」のコメントを参考に
-    カードを追加・削除してな！YouTubeのURLとサムネURLを貼るだけでOKやで🐾
-  </div> -->
+  <!-- ============================================
+       🐱 おすすめ動画を追加するにはここを編集！
 
-  <!-- ── 配信予定 ── -->
-  <div class="section-label">Upcoming</div>
-  <div class="section-title">配信予定</div>
-
-  <div class="schedule-grid" id="upcoming-grid">
-
-    <!-- ============================================
-         🐱 配信予定を追加するにはここを編集！
-
-         コピペ用テンプレ（予定）↓
-         ──────────────────────────────
-         <a href="YouTubeのURL" target="_blank" rel="noopener" class="schedule-card upcoming">
-           <img src="https://img.youtube.com/vi/動画ID/maxresdefault.jpg" alt="配信タイトル" class="card-thumb">
-           <div class="card-body">
-             <div class="card-badge upcoming">配信予定</div>
-             <div class="card-title">配信タイトルをここに書く</div>
-             <div class="card-date">2026年XX月XX日 XX:XX〜</div>
+       コピペ用テンプレ ↓
+       ──────────────────────────────
+       <a href="YouTubeのURL" target="_blank" rel="noopener" class="rec-card">
+         <div class="rec-thumb-wrap">
+           <img src="https://img.youtube.com/vi/動画ID/maxresdefault.jpg" alt="タイトル" class="rec-thumb">
+           <div class="rec-ribbon">おすすめ</div>
+           <div class="rec-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+         </div>
+         <div class="rec-body">
+           <div class="rec-title">動画タイトルをここに書いてな</div>
+           <div class="rec-meta">
+             <span class="rec-meta-item views">1.2万 回視聴</span>
+             <span class="rec-meta-item date">2024年XX月XX日</span>
            </div>
-         </a>
-         ──────────────────────────────
-         ※ 動画IDはYouTubeURLの "watch?v=" の後ろの文字列
-            例: https://www.youtube.com/watch?v=XXXXXXXXXX → 動画ID = XXXXXXXXXX
-         ============================================ -->
+         </div>
+       </a>
+       ──────────────────────────────
+       ※ 動画IDは watch?v= の後ろの文字だけ！(&以降は消す)
+       ※ 再生数(views)は手動で書いてな。消したいときはその<span>ごと削除！
+       ============================================ -->
 
-    <!-- 予定がないときはこのブロックが表示されるで（予定追加したら削除してな） -->
-    <!-- <div class="card-empty">
-      <span>📅</span>
-      現在スケジュールされている配信はないで〜！<br>
-      Xをフォローして最新情報をチェックしてな🐱
-    </div> -->
-             <a href="YouTubeのURL" target="_blank" rel="noopener" class="schedule-card upcoming">
-           <img src="https://img.youtube.com/vi/ykzL7nLc11Q/maxresdefault.jpg" alt="【CoD:BO7/ Warzone 参加型】COD ランクマで一緒に遊ぼ！ 初見さんいらっしゃーい🐈✨ #新人vtuber" class="card-thumb">
-           <div class="card-body">
-             <div class="card-badge upcoming">配信予定</div>
-             <div class="card-title">【CoD:BO7/ Warzone 参加型】COD ランクマで一緒に遊ぼ！ 初見さんいらっしゃーい🐈✨ #新人vtuber</div>
-             <div class="card-date">2026年6月1日 22:00〜</div>
-           </div>
-         </a>
+  <div class="section-label">Pick Up</div>
+  <div class="section-title">ちゃんほぷのイチオシ🐈💕</div>
 
-  </div>
+  <div class="recommend-grid">
 
-  <div class="divider"></div>
-
-  <!-- ── アーカイブ ── -->
-  <div class="section-label">Archive</div>
-  <div class="section-title">アーカイブ</div>
-
-  <div class="schedule-grid" id="archive-grid">
-
-    <!-- ============================================
-         🐱 アーカイブを追加するにはここを編集！
-
-         コピペ用テンプレ（アーカイブ）↓
-         ──────────────────────────────
-         <a href="YouTubeのURL" target="_blank" rel="noopener" class="schedule-card">
-           <img src="https://img.youtube.com/vi/動画ID/maxresdefault.jpg" alt="配信タイトル" class="card-thumb">
-           <div class="card-body">
-             <div class="card-badge archive">アーカイブ</div>
-             <div class="card-title">配信タイトルをここに書いてな</div>
-             <div class="card-date">2026年XX月XX日</div>
-           </div>
-         </a>
-         ──────────────────────────────
-         ============================================ -->
-
-    <a href="https://www.youtube.com/watch?v=W26x7pa31TA" target="_blank" rel="noopener" class="schedule-card">
-      <img src="https://img.youtube.com/vi/W26x7pa31TA/maxresdefault.jpg" alt="【新人VTuber】 VTuberデビュー配信！ ちゃんほぷです！🐈✨" class="card-thumb">
-      <div class="card-body">
-        <div class="card-badge archive">アーカイブ</div>
-        <div class="card-title">【新人VTuber】 VTuberデビュー配信！ ちゃんほぷです！🐈✨</div>
-        <div class="card-date">2025年9月20日</div>
+    <a href="https://www.youtube.com/watch?v=W26x7pa31TA" target="_blank" rel="noopener" class="rec-card">
+      <div class="rec-thumb-wrap">
+        <img src="https://img.youtube.com/vi/W26x7pa31TA/maxresdefault.jpg" alt="【新人VTuber】 VTuberデビュー配信！ ちゃんほぷです！🐈✨" class="rec-thumb">
+        <div class="rec-ribbon">おすすめ</div>
+        <div class="rec-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="rec-body">
+        <div class="rec-title">【新人VTuber】 VTuberデビュー配信！ ちゃんほぷです！🐈✨</div>
+        <div class="rec-meta">
+          <span class="rec-meta-item views">回視聴</span>
+          <span class="rec-meta-item date">2025年9月20日</span>
+        </div>
       </div>
     </a>
 
-    <a href="https://www.youtube.com/watch?v=5Pc-gBoJDxc" target="_blank" rel="noopener" class="schedule-card">
-      <img src="https://img.youtube.com/vi/5Pc-gBoJDxc/maxresdefault.jpg" alt="【CoD:BO7/ Warzone 参加型】初見さんいらっしゃーい🐈✨ 朝活COD楽しく遊ぼ～！" class="card-thumb">
-      <div class="card-body">
-        <div class="card-badge archive">アーカイブ</div>
-        <div class="card-title">【CoD:BO7/ Warzone 参加型】初見さんいらっしゃーい🐈✨ 朝活COD楽しく遊ぼ～！</div>
-        <div class="card-date">2026年5月2日</div>
+    <a href="https://www.youtube.com/watch?v=5Pc-gBoJDxc" target="_blank" rel="noopener" class="rec-card">
+      <div class="rec-thumb-wrap">
+        <img src="https://img.youtube.com/vi/5Pc-gBoJDxc/maxresdefault.jpg" alt="【CoD:BO7/ Warzone 参加型】初見さんいらっしゃーい🐈✨ 朝活COD楽しく遊ぼ～！" class="rec-thumb">
+        <div class="rec-ribbon">おすすめ</div>
+        <div class="rec-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="rec-body">
+        <div class="rec-title">【CoD:BO7/ Warzone 参加型】初見さんいらっしゃーい🐈✨ 朝活COD楽しく遊ぼ～！</div>
+        <div class="rec-meta">
+          <span class="rec-meta-item views">回視聴</span>
+          <span class="rec-meta-item date">2026年5月2日</span>
+        </div>
       </div>
     </a>
 
@@ -233,7 +227,9 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrawer();});
 
 // Fade in cards
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity="1";e.target.style.transform="translateY(0)";obs.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll(".schedule-card,.update-guide").forEach((el,i)=>{el.style.opacity="0";el.style.transform="translateY(18px)";el.style.transition="opacity .55s ease, transform .55s ease";el.style.transitionDelay=(i*.08)+"s";obs.observe(el);});
+document.querySelectorAll(".rec-card").forEach((el,i)=>{el.style.opacity="0";el.style.transform="translateY(18px)";el.style.transition="opacity .55s ease, transform .55s ease";el.style.transitionDelay=(i*.08)+"s";obs.observe(el);});
+
+
 </script>
 </body>
 </html>
