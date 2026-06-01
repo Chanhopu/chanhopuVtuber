@@ -231,33 +231,24 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   </ul>
 </footer>
 
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="動画プレイヤー">
-  <div class="video-modal-inner">
-    <button class="video-modal-close" id="videoModalClose" aria-label="閉じる">&times;</button>
-    <div class="video-modal-frame" id="videoModalFrame"></div>
-
 <script>
-const hamburger = document.getElementById("hamburger");
-const drawer    = document.getElementById("drawer");
-function closeDrawer(){hamburger.classList.remove("open");drawer.classList.remove("open");hamburger.setAttribute("aria-expanded","false");document.body.style.overflow="";}
-hamburger.addEventListener("click",()=>{const open=drawer.classList.toggle("open");hamburger.classList.toggle("open",open);hamburger.setAttribute("aria-expanded",String(open));document.body.style.overflow=open?"hidden":"";});
-drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeDrawer));
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrawer();});
+document.addEventListener("DOMContentLoaded", function(){
 
-// Fade in cards
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity="1";e.target.style.transform="translateY(0)";obs.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll(".rec-card").forEach((el,i)=>{el.style.opacity="0";el.style.transform="translateY(18px)";el.style.transition="opacity .55s ease, transform .55s ease";el.style.transitionDelay=(i*.08)+"s";obs.observe(el);});
+  // ── ハンバーガーメニュー ──
+  const hamburger = document.getElementById("hamburger");
+  const drawer    = document.getElementById("drawer");
+  if(hamburger && drawer){
+    function closeDrawer(){hamburger.classList.remove("open");drawer.classList.remove("open");hamburger.setAttribute("aria-expanded","false");document.body.style.overflow="";}
+    hamburger.addEventListener("click",()=>{const open=drawer.classList.toggle("open");hamburger.classList.toggle("open",open);hamburger.setAttribute("aria-expanded",String(open));document.body.style.overflow=open?"hidden":"";});
+    drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeDrawer));
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrawer();});
+  }
 
-
-
-// ── 動画モーダル ──
-(function(){
+  // ── 動画モーダル ──
   const modal = document.getElementById("videoModal");
   const frame = document.getElementById("videoModalFrame");
   const titleEl = document.getElementById("videoModalTitle");
   const closeBtn = document.getElementById("videoModalClose");
-  if(!modal) return;
 
   function openModal(videoId, title){
     if(!videoId || videoId === "動画ID") return;
@@ -268,28 +259,53 @@ document.querySelectorAll(".rec-card").forEach((el,i)=>{el.style.opacity="0";el.
     document.body.style.overflow = "hidden";
   }
   function closeModal(){
+    if(!modal) return;
     modal.classList.remove("open");
-    frame.innerHTML = "";        // 再生停止
+    frame.innerHTML = "";
     document.body.style.overflow = "";
   }
 
+  // イベント委譲：rec-card内のどこをクリックしても拾える
   document.querySelectorAll(".rec-card[data-video]").forEach(card => {
     const vid = card.getAttribute("data-video");
     const titleNode = card.querySelector(".rec-title");
     const title = titleNode ? titleNode.textContent.trim() : "";
-    card.addEventListener("click", () => openModal(vid, title));
-    card.addEventListener("keydown", e => {
+    card.style.cursor = "pointer";
+    card.addEventListener("click", function(ev){
+      ev.preventDefault();
+      openModal(vid, title);
+    });
+    card.addEventListener("keydown", function(e){
       if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openModal(vid, title); }
     });
   });
 
-  closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
-  document.addEventListener("keydown", e => { if(e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
-})();
+  if(closeBtn) closeBtn.addEventListener("click", closeModal);
+  if(modal) modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
+  document.addEventListener("keydown", e => { if(e.key === "Escape" && modal && modal.classList.contains("open")) closeModal(); });
 
+  // ── カードのフェードイン（クリックを邪魔しない形で）──
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.style.opacity="1"; e.target.style.transform="translateY(0)"; obs.unobserve(e.target); }
+    });
+  },{threshold:.1});
+  document.querySelectorAll(".rec-card").forEach((el,i)=>{
+    el.style.opacity="0";
+    el.style.transform="translateY(18px)";
+    el.style.transition="opacity .55s ease, transform .55s ease";
+    el.style.transitionDelay=(i*.08)+"s";
+    obs.observe(el);
+  });
+
+});
 </script>
 
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="動画プレイヤー">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" aria-label="閉じる">&times;</button>
+    <div class="video-modal-frame" id="videoModalFrame"></div>
     <div class="video-modal-title" id="videoModalTitle"></div>
   </div>
 </div>
