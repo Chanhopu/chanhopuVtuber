@@ -166,6 +166,18 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 .twitter-wrap .twitter-timeline{border-radius:16px!important;overflow:hidden;}
 @media(max-width:600px){.schedule-banner-arrow{display:none;}}
 
+
+/* X FOLLOW CARD */
+.x-follow-card{display:flex;align-items:center;gap:clamp(16px,3vw,24px);max-width:600px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:clamp(20px,4vw,32px);text-decoration:none;color:var(--text);transition:all .3s;-webkit-tap-highlight-color:transparent;}
+.x-follow-card:hover,.x-follow-card:active{border-color:rgba(100,200,255,.45);transform:translateY(-3px);box-shadow:0 12px 36px rgba(100,200,255,.12);}
+.x-follow-icon{width:clamp(48px,9vw,60px);height:clamp(48px,9vw,60px);border-radius:14px;background:rgba(100,200,255,.10);display:flex;align-items:center;justify-content:center;color:#64c8ff;flex-shrink:0;}
+.x-follow-text{flex:1;min-width:0;}
+.x-follow-name{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(1rem,2.6vw,1.25rem);margin-bottom:4px;}
+.x-follow-sub{font-size:clamp(.72rem,1.7vw,.82rem);color:var(--text2);line-height:1.7;}
+.x-follow-btn{flex-shrink:0;background:#64c8ff;color:#0d0d12;font-weight:700;font-size:clamp(.7rem,1.7vw,.8rem);letter-spacing:.06em;padding:10px 20px;border-radius:100px;transition:all .25s;}
+.x-follow-card:hover .x-follow-btn{background:#8fd6ff;}
+@media(max-width:540px){.x-follow-card{flex-wrap:wrap;}.x-follow-btn{width:100%;text-align:center;}}
+
 </style>
 </head>
 <body>
@@ -175,7 +187,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <ul class="nav-links">
     <li><a href="#profile">About</a></li>
     <li><a href="#links">Links</a></li>
-    <li><a href="./schedule.html">Pick Up</a></li>
+    <li><a href="./pickup.html">Pick Up</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
@@ -187,7 +199,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <a href="#hero" class="drawer-link">Home</a>
   <a href="#profile" class="drawer-link">About</a>
   <a href="#links" class="drawer-link">Links</a>
-  <a href="./schedule.html" class="drawer-link">Schedule</a>
+  <a href="./pickup.html" class="drawer-link">Schedule</a>
   <a href="#gallery" class="drawer-link">Gallery</a>
 </div>
 
@@ -314,7 +326,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 <section id="schedule-banner" style="background:var(--bg);padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);">
   <div class="section-label">Pick Up</div>
   <div class="section-title">おすすめ動画</div>
-  <a href="./schedule.html" class="schedule-banner-card">
+  <a href="./pickup.html" class="schedule-banner-card">
     <div class="schedule-banner-inner">
       <div class="schedule-banner-icon">⭐</div>
       <div class="schedule-banner-text">
@@ -332,18 +344,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 <section id="twitter-timeline" style="background:var(--bg2);padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);">
   <div class="section-label">Timeline</div>
   <div class="section-title">最新のつぶやき</div>
-  <div class="twitter-wrap">
-    <iframe
-      src="https://syndication.twitter.com/srv/timeline-profile/screen-name/chanhopuVT?dnt=true&theme=dark&chrome=noheader%20nofooter%20noborders&tweet_limit=5"
-      width="100%"
-      height="600"
-      frameborder="0"
-      scrolling="no"
-      style="border-radius:16px;max-width:600px;width:100%;display:block;margin:0 auto;background:var(--surface);"
-      title="ちゃんほぷ Xタイムライン"
-      loading="lazy"
-    ></iframe>
-  </div>
+  <a href="https://x.com/chanhopuVT" target="_blank" rel="noopener" class="x-follow-card">
+    <div class="x-follow-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </div>
+    <div class="x-follow-text">
+      <div class="x-follow-name">@chanhopuVT</div>
+      <div class="x-follow-sub">最新のつぶやき・配信告知はXでチェックしてな🐈✨</div>
+    </div>
+    <div class="x-follow-btn">フォローする</div>
+  </a>
 </section>
 
 <div class="divider"></div>
