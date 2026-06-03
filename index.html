@@ -42,7 +42,8 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{background:var(--bg);color:var(--text);font-family:"Noto Sans JP",sans-serif;font-weight:200;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 body::before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:9997;}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:clamp(14px,3vw,22px) clamp(20px,5vw,48px);padding-top:calc(clamp(14px,3vw,22px) + var(--safe-top));background:linear-gradient(to bottom,rgba(13,13,18,.95),transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
-.nav-logo{font-family:"DM Serif Display",serif;font-size:clamp(1.1rem,3vw,1.35rem);letter-spacing:.04em;color:var(--accent1);text-decoration:none;}
+.nav-logo{font-family:"DM Serif Display",serif;font-size:clamp(1.1rem,3vw,1.35rem);letter-spacing:.04em;color:var(--accent1);text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:clamp(28px,5vw,38px);width:auto;display:block;}
 .nav-links{display:flex;gap:clamp(20px,4vw,36px);list-style:none;}
 .nav-links a{color:var(--text2);text-decoration:none;font-size:clamp(.6rem,1.5vw,.72rem);letter-spacing:.18em;text-transform:uppercase;transition:color .2s;white-space:nowrap;}
 .nav-links a:hover{color:var(--accent1);}
@@ -178,16 +179,32 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 .x-follow-card:hover .x-follow-btn{background:#8fd6ff;}
 @media(max-width:540px){.x-follow-card{flex-wrap:wrap;}.x-follow-btn{width:100%;text-align:center;}}
 
+
+/* SHOP SECTION */
+.shop-card{display:block;text-decoration:none;background:linear-gradient(135deg,var(--surface),#211a26);border:1.5px solid rgba(252,76,118,.28);border-radius:24px;padding:clamp(28px,5vw,48px);transition:all .35s;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;}
+.shop-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 85% 50%,rgba(252,76,118,.10),transparent 60%);pointer-events:none;}
+.shop-card:hover,.shop-card:active{border-color:rgba(252,76,118,.6);transform:translateY(-4px);box-shadow:0 16px 48px rgba(252,76,118,.15);}
+.shop-inner{display:flex;align-items:center;gap:clamp(20px,4vw,40px);position:relative;z-index:1;flex-wrap:wrap;}
+.shop-icon{width:clamp(56px,10vw,80px);height:clamp(56px,10vw,80px);border-radius:18px;background:rgba(252,76,118,.12);display:flex;align-items:center;justify-content:center;color:#fc4c76;flex-shrink:0;}
+.shop-text{flex:1;min-width:200px;}
+.shop-title{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(1.2rem,3.5vw,1.7rem);margin-bottom:8px;}
+.shop-sub{font-size:clamp(.78rem,2vw,.9rem);color:var(--text2);line-height:1.8;}
+.shop-btn{flex-shrink:0;background:#fc4c76;color:#fff;font-weight:700;font-size:clamp(.75rem,1.8vw,.85rem);letter-spacing:.06em;padding:14px 32px;border-radius:100px;transition:all .25s;white-space:nowrap;}
+.shop-card:hover .shop-btn{background:#ff6b90;box-shadow:0 4px 20px rgba(252,76,118,.4);}
+@media(max-width:560px){.shop-btn{width:100%;text-align:center;}}
+
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <a href="#hero" class="nav-logo">ちゃんほぷ</a>
+  <a href="#hero" class="nav-logo"><img src="./logo.png" alt="ちゃんほぷ"></a>
   <ul class="nav-links">
     <li><a href="#profile">About</a></li>
     <li><a href="#links">Links</a></li>
     <li><a href="./pickup.html">Pick Up</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="./faq.html">FAQ</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
@@ -297,7 +314,22 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
   <div class="section-label">Links</div>
   <div class="section-title">配信・SNSリンク</div>
   <div class="links-grid">
-    <a href="https://www.youtube.com/@chanhopu" target="_blank" rel="noopener" class="link-card">
+    
+    <a href="https://discord.gg/JGfau7eMDC" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon" style="background:rgba(120,130,240,.12);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#7882f0" aria-hidden="true"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.444.864-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.6 12.6 0 0 0-.617-1.25.077.077 0 0 0-.079-.036A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127c-.598.349-1.22.645-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg>
+      </div>
+      <div class="link-info"><div class="link-name">Discord</div><div class="link-desc">ファンコミュニティ🐈</div></div>
+      <div class="link-arrow" aria-hidden="true">→</div>
+    </a>
+    <a href="https://chanhopu.booth.pm/" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon" style="background:rgba(252,76,118,.12);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fc4c76" aria-hidden="true"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.3l7 3.5-7 3.5-7-3.5 7-3.5zM4 9.2l7 3.5v7.1l-7-3.5V9.2zm9 10.6v-7.1l7-3.5v7.1l-7 3.5z"/></svg>
+      </div>
+      <div class="link-info"><div class="link-name">BOOTH</div><div class="link-desc">グッズ・ショップはこちら🛍️</div></div>
+      <div class="link-arrow" aria-hidden="true">→</div>
+    </a>
+<a href="https://www.youtube.com/@chanhopu" target="_blank" rel="noopener" class="link-card">
       <div class="link-icon yt"><svg width="22" height="22" viewBox="0 0 24 24" fill="#ff5050" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></div>
       <div class="link-info"><div class="link-name">YouTube</div><div class="link-desc">@chanhopu / 配信・動画</div></div>
       <div class="link-arrow" aria-hidden="true">→</div>
@@ -353,6 +385,26 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
       <div class="x-follow-sub">最新のつぶやき・配信告知はXでチェックしてな🐈✨</div>
     </div>
     <div class="x-follow-btn">フォローする</div>
+  </a>
+</section>
+
+<div class="divider"></div>
+
+<!-- SHOP -->
+<section id="shop" style="background:var(--bg);padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);">
+  <div class="section-label">Shop</div>
+  <div class="section-title">グッズ・ショップ</div>
+  <a href="https://chanhopu.booth.pm/" target="_blank" rel="noopener" class="shop-card">
+    <div class="shop-inner">
+      <div class="shop-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.3l7 3.5-7 3.5-7-3.5 7-3.5zM4 9.2l7 3.5v7.1l-7-3.5V9.2zm9 10.6v-7.1l7-3.5v7.1l-7 3.5z"/></svg>
+      </div>
+      <div class="shop-text">
+        <div class="shop-title">ちゃんほぷ BOOTH 🛍️</div>
+        <div class="shop-sub">グッズやデジタルアイテムはこちらで販売中！<br>応援してくれると めちゃくちゃ嬉しいで〜🐈💕</div>
+      </div>
+      <div class="shop-btn">ショップを見る →</div>
+    </div>
   </a>
 </section>
 
