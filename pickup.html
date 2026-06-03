@@ -19,7 +19,8 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{background:var(--bg);color:var(--text);font-family:"Noto Sans JP",sans-serif;font-weight:200;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 body::before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:9997;}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:clamp(14px,3vw,22px) clamp(20px,5vw,48px);padding-top:calc(clamp(14px,3vw,22px) + var(--safe-top));background:linear-gradient(to bottom,rgba(13,13,18,.95),transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
-.nav-logo{font-family:"DM Serif Display",serif;font-size:clamp(1.1rem,3vw,1.35rem);letter-spacing:.04em;color:var(--accent1);text-decoration:none;}
+.nav-logo{font-family:"DM Serif Display",serif;font-size:clamp(1.1rem,3vw,1.35rem);letter-spacing:.04em;color:var(--accent1);text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:clamp(28px,5vw,38px);width:auto;display:block;}
 .nav-back{display:flex;align-items:center;gap:8px;color:var(--text2);text-decoration:none;font-size:clamp(.6rem,1.5vw,.72rem);letter-spacing:.18em;text-transform:uppercase;transition:color .2s;-webkit-tap-highlight-color:transparent;}
 .nav-back:hover{color:var(--accent1);}
 .nav-back::before{content:"←";font-size:.9rem;}
@@ -128,7 +129,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 <body>
 
 <nav>
-  <a href="./index.html" class="nav-logo">ちゃんほぷ</a>
+  <a href="./index.html" class="nav-logo"><img src="./logo.png" alt="ちゃんほぷ"></a>
   <a href="./index.html" class="nav-back"><span>トップへ戻る</span></a>
   <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -194,7 +195,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
       <div class="rec-body">
         <div class="rec-title">【新人VTuber】 VTuberデビュー配信！ ちゃんほぷです！🐈✨</div>
         <div class="rec-meta">
-          <span class="rec-meta-item views">295回視聴</span>
+          <span class="rec-meta-item views">294回視聴</span>
           <span class="rec-meta-item date">2025年9月20日</span>
         </div>
       </div>
@@ -209,7 +210,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
       <div class="rec-body">
         <div class="rec-title">【CoD:BO7/ Warzone 参加型】ゲリラ配信！ CODで一緒に遊ぼ！ 初見さんいらっしゃーい🐈✨ #新人vtuber</div>
         <div class="rec-meta">
-          <span class="rec-meta-item views">66回視聴</span>
+          <span class="rec-meta-item views">52回視聴</span>
           <span class="rec-meta-item date">2026年5月31日</span>
         </div>
       </div>
