@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>FAQ | ちゃんほぷ</title>
+<meta name="description" content="ちゃんほぷへのよくある質問 - 切り抜き・ファンアート規約・コラボ依頼・配信について">
+<meta property="og:title" content="FAQ | ちゃんほぷ">
+<meta property="og:description" content="ちゃんほぷへのよくある質問">
+<meta property="og:image" content="https://chanhopu.github.io/chanhopuVtuber/chanhopu.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;700;900&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@200;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d12;--bg2:#13131c;--surface:#1a1a28;--surface2:#22223a;--accent1:#c8a2d8;--accent2:#a8d8c8;--accent3:#f0c0d0;--text:#e8e4f0;--text2:#9890b0;--border:rgba(200,162,216,0.18);--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--text);font-family:"Noto Sans JP",sans-serif;font-weight:200;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:9997;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:clamp(14px,3vw,22px) clamp(20px,5vw,48px);padding-top:calc(clamp(14px,3vw,22px) + var(--safe-top));background:linear-gradient(to bottom,rgba(13,13,18,.95),transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-logo img{height:clamp(28px,5vw,38px);width:auto;display:block;}
+.nav-back{display:flex;align-items:center;gap:8px;color:var(--text2);text-decoration:none;font-size:clamp(.6rem,1.5vw,.72rem);letter-spacing:.18em;text-transform:uppercase;transition:color .2s;-webkit-tap-highlight-color:transparent;}
+.nav-back:hover{color:var(--accent1);}
+.nav-back::before{content:"\2190";font-size:.9rem;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-22px) scale(1.04);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.page-hero{min-height:38svh;display:flex;align-items:flex-end;padding:calc(clamp(80px,15vw,140px) + 20px) clamp(20px,10vw,10vw) clamp(40px,6vw,60px);position:relative;overflow:hidden;}
+.page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 30% 60%,rgba(200,162,216,.12),transparent 55%),radial-gradient(ellipse 40% 60% at 80% 30%,rgba(168,216,200,.08),transparent 60%);}
+.orb{position:absolute;border-radius:50%;filter:blur(48px);pointer-events:none;animation:float 8s ease-in-out infinite;}
+.orb1{width:clamp(120px,20vw,240px);height:clamp(120px,20vw,240px);background:rgba(200,162,216,.10);top:10%;right:10%;}
+.orb2{width:clamp(80px,12vw,160px);height:clamp(80px,12vw,160px);background:rgba(168,216,200,.08);bottom:20%;left:15%;animation-delay:-4s;}
+.page-hero-content{position:relative;z-index:1;animation:fadeUp .8s ease both;}
+.page-label{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent2);margin-bottom:10px;}
+.page-title{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:clamp(2.2rem,8vw,5rem);line-height:1.18;padding-bottom:.1em;background:linear-gradient(135deg,var(--accent1),var(--accent3),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-sub{margin-top:14px;font-size:clamp(.82rem,2vw,.92rem);color:var(--text2);line-height:2;}
+main{padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);max-width:900px;margin:0 auto;}
+.faq-list{display:flex;flex-direction:column;gap:clamp(14px,2.5vw,20px);}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:border-color .3s;}
+.faq-item:hover{border-color:rgba(200,162,216,.35);}
+.faq-q{display:flex;align-items:center;gap:14px;padding:clamp(18px,3.5vw,26px);cursor:pointer;list-style:none;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(.92rem,2.3vw,1.1rem);color:var(--text);-webkit-tap-highlight-color:transparent;transition:color .2s;}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-q:hover{color:var(--accent1);}
+.faq-q-icon{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent1),var(--accent3));color:#1a1a28;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:900;}
+.faq-q-text{flex:1;}
+.faq-arrow{flex-shrink:0;color:var(--text2);transition:transform .3s;font-size:1.1rem;}
+.faq-item[open] .faq-arrow{transform:rotate(180deg);}
+.faq-a{padding:0 clamp(18px,3.5vw,26px) clamp(20px,3.5vw,26px) clamp(64px,9vw,72px);font-size:clamp(.82rem,2vw,.92rem);color:var(--text2);line-height:2;animation:faqOpen .35s ease;}
+@keyframes faqOpen{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+.faq-a a{color:var(--accent1);text-decoration:none;border-bottom:1px solid rgba(200,162,216,.4);}
+.faq-a a:hover{color:var(--accent3);}
+.faq-a strong{color:var(--accent2);font-weight:700;}
+.faq-contact{margin-top:clamp(40px,7vw,64px);text-align:center;background:var(--surface);border:1px solid rgba(168,216,200,.2);border-radius:20px;padding:clamp(28px,5vw,44px);}
+.faq-contact-title{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(1rem,2.8vw,1.3rem);margin-bottom:10px;}
+.faq-contact-sub{font-size:clamp(.78rem,2vw,.88rem);color:var(--text2);line-height:1.9;margin-bottom:22px;}
+.faq-contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.faq-cbtn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:100px;text-decoration:none;font-size:clamp(.72rem,1.8vw,.8rem);font-weight:700;letter-spacing:.06em;transition:all .25s;-webkit-tap-highlight-color:transparent;}
+.faq-cbtn.x{background:transparent;border:1.5px solid rgba(100,200,255,.4);color:var(--text);}
+.faq-cbtn.x:hover{background:rgba(100,200,255,.08);border-color:rgba(100,200,255,.7);color:#a0e0ff;}
+.faq-cbtn.marsh{background:var(--accent1);color:#0d0d12;border:1.5px solid var(--accent1);}
+.faq-cbtn.marsh:hover{background:transparent;color:var(--accent1);}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40px,8vw,56px) clamp(20px,10vw,10vw) calc(clamp(32px,6vw,40px) + var(--safe-bottom));display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+.footer-name{font-family:"DM Serif Display",serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--accent1);margin-bottom:6px;}
+.footer-copy{font-size:.62rem;color:var(--text2);letter-spacing:.1em;}
+.footer-links{display:flex;gap:clamp(16px,3vw,24px);list-style:none;flex-wrap:wrap;}
+.footer-links a{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s;-webkit-tap-highlight-color:transparent;}
+.footer-links a:hover{color:var(--accent1);}
+@media(max-width:600px){footer{flex-direction:column;align-items:flex-start;}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="./index.html" class="nav-logo"><img src="./logo.png" alt="ちゃんほぷ"></a>
+  <a href="./index.html" class="nav-back">トップへ戻る</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="page-hero-content">
+    <div class="page-label">FAQ</div>
+    <h1 class="page-title">よくある質問</h1>
+    <p class="page-sub">みんなからよく聞かれることをまとめたで〜！🐈✨</p>
+  </div>
+</div>
+
+<main>
+  <div class="faq-list">
+
+    <!-- ============================================
+         🐱 FAQを追加・編集したい場合はここをコピペ！
+         <details class="faq-item">
+           <summary class="faq-q">
+             <span class="faq-q-icon">Q</span>
+             <span class="faq-q-text">質問をここに</span>
+             <span class="faq-arrow">\25BE</span>
+           </summary>
+           <div class="faq-a">回答をここに書いてな！</div>
+         </details>
+         ============================================ -->
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        <span class="faq-q-icon">Q</span>
+        <span class="faq-q-text">配信の切り抜きはしてもいい？</span>
+        <span class="faq-arrow">&#9662;</span>
+      </summary>
+      <div class="faq-a">
+        切り抜き大歓迎やで〜！🎬✨<br>
+        ただし、<strong>元配信のURLを概要欄に記載</strong>してくれると嬉しいわ。<br>
+        悪意のある編集や、内容を捻じ曲げるような切り抜きはやめてな。みんなが楽しく見られる範囲でお願いします🐈
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        <span class="faq-q-icon">Q</span>
+        <span class="faq-q-text">ファンアートを描くときのルールは？</span>
+        <span class="faq-arrow">&#9662;</span>
+      </summary>
+      <div class="faq-a">
+        ファンアートめちゃくちゃ嬉しいで〜！🎨💕<br>
+        描いてくれたら <a href="https://x.com/search?q=%23%E3%81%A1%E3%82%83%E3%82%93%E3%81%BB%E3%81%B7%E7%BE%8E%E8%A1%93%E9%A4%A8&src=typed_query&f=top" target="_blank" rel="noopener">#ちゃんほぷ美術館</a> をつけてXに投稿してな！<br>
+        <strong>過度に性的な表現・公序良俗に反する内容</strong>はご遠慮ください。常識の範囲で楽しんでくれたら大丈夫やで🐾
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        <span class="faq-q-icon">Q</span>
+        <span class="faq-q-text">コラボやお仕事の依頼はできる？</span>
+        <span class="faq-arrow">&#9662;</span>
+      </summary>
+      <div class="faq-a">
+        コラボ・企業案件などのご依頼、お待ちしてます！🤝<br>
+        <a href="https://x.com/chanhopuVT" target="_blank" rel="noopener">X (@chanhopuVT)</a> のDM、または<a href="https://marshmallow-qa.com/gajbnwcxkjrmt12?t=drOxhf&utm_medium=url_text&utm_source=promotion" target="_blank" rel="noopener">マシュマロ</a>までご連絡ください。<br>
+        内容を確認してお返事するで〜🐈
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        <span class="faq-q-icon">Q</span>
+        <span class="faq-q-text">どんな配信をしてる？頻度は？</span>
+        <span class="faq-arrow">&#9662;</span>
+      </summary>
+      <div class="faq-a">
+        ゲーム配信（CoDとか）や、まったり雑談配信をしてるで〜！🎮🐱<br>
+        配信のお知らせは <a href="https://x.com/chanhopuVT" target="_blank" rel="noopener">X</a> で告知してるから、フォローして通知オンにしといてくれると見逃さんで！<br>
+        最新の配信は <a href="./pickup.html">おすすめ動画ページ</a> でもチェックできるで✨
+      </div>
+    </details>
+
+  </div>
+
+  <div class="faq-contact">
+    <div class="faq-contact-title">質問が見つからへんかった？🐈</div>
+    <div class="faq-contact-sub">気軽に聞いてな〜！XのDMかマシュマロでどうぞ💕</div>
+    <div class="faq-contact-btns">
+      <a href="https://x.com/chanhopuVT" target="_blank" rel="noopener" class="faq-cbtn x">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        XでDM
+      </a>
+      <a href="https://marshmallow-qa.com/gajbnwcxkjrmt12?t=drOxhf&utm_medium=url_text&utm_source=promotion" target="_blank" rel="noopener" class="faq-cbtn marsh">💌 マシュマロで質問</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>
+    <div class="footer-name">ちゃんほぷ</div>
+    <div class="footer-copy">&copy; 2024 chanhopu. All rights reserved.</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="https://www.youtube.com/@chanhopu" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="https://x.com/chanhopuVT" target="_blank" rel="noopener">X / Twitter</a></li>
+    <li><a href="./index.html">Home</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
