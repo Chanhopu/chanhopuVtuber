@@ -124,6 +124,26 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 .video-modal-title{margin-top:18px;text-align:center;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(.9rem,2.2vw,1.1rem);color:var(--text);line-height:1.5;}
 @media(max-width:600px){.video-modal-close{top:-10px;right:4px;width:38px;height:38px;font-size:1.2rem;}}
 
+
+/* ── SHORTS (縦長) ── */
+.shorts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:clamp(16px,3vw,24px);}
+.short-card{cursor:pointer;position:relative;background:linear-gradient(165deg,var(--surface) 0%,#1f1a2a 100%);border:1.5px solid rgba(200,162,216,.3);border-radius:20px;overflow:hidden;transition:all .35s cubic-bezier(.2,.8,.2,1);-webkit-tap-highlight-color:transparent;}
+.short-card::after{content:"";position:absolute;inset:0;border-radius:20px;padding:1.5px;background:linear-gradient(135deg,rgba(200,162,216,.5),rgba(240,192,208,.4),rgba(168,216,200,.45));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.5;transition:opacity .35s;pointer-events:none;}
+.short-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(200,162,216,.18);}
+.short-card:hover::after{opacity:1;}
+.short-thumb-wrap{position:relative;overflow:hidden;aspect-ratio:9/16;}
+.short-thumb{width:100%;height:100%;object-fit:cover;display:block;background:var(--surface2);transition:transform .5s ease;}
+.short-card:hover .short-thumb{transform:scale(1.06);}
+.short-thumb-wrap::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,18,.75) 0%,transparent 45%);z-index:1;pointer-events:none;}
+.short-badge{position:absolute;top:10px;left:10px;z-index:3;display:inline-flex;align-items:center;gap:5px;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:5px 11px;background:linear-gradient(135deg,#f0c0d0,#c8a2d8);color:#1a1a28;border-radius:100px;box-shadow:0 4px 14px rgba(240,192,208,.4);}
+.short-badge::before{content:"▶";font-size:.65rem;}
+.short-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.85);width:54px;height:54px;border-radius:50%;background:rgba(240,192,208,.92);display:flex;align-items:center;justify-content:center;z-index:2;opacity:0;transition:all .35s;box-shadow:0 4px 24px rgba(240,192,208,.5);}
+.short-card:hover .short-play{opacity:1;transform:translate(-50%,-50%) scale(1);}
+.short-play svg{width:22px;height:22px;fill:#1a1a28;margin-left:2px;}
+.short-title{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:12px 14px;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(.72rem,1.8vw,.82rem);line-height:1.4;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6);}
+/* モーダル縦長対応 */
+.video-modal-frame.vertical{aspect-ratio:9/16;max-width:min(400px,90vw);margin:0 auto;}
+
 </style>
 </head>
 <body>
@@ -218,6 +238,41 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 
   </div>
 
+  <div style="height:clamp(40px,7vw,64px);"></div>
+
+  <!-- ============================================
+       🐱 ショート動画を追加するにはここを編集！
+
+       コピペ用テンプレ ↓
+       ──────────────────────────────
+       <div class="short-card" data-video="動画ID" data-vertical="1" role="button" tabindex="0">
+         <div class="short-thumb-wrap">
+           <img src="https://img.youtube.com/vi/動画ID/oardefault.jpg" alt="タイトル" class="short-thumb">
+           <div class="short-badge">Shorts</div>
+           <div class="short-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+           <div class="short-title">ショートのタイトル</div>
+         </div>
+       </div>
+       ──────────────────────────────
+       ※ data-video="動画ID" は shorts/動画ID の動画IDの部分だけ！
+          例: https://www.youtube.com/shorts/XXXXXXXX → 動画ID = XXXXXXXX
+       ※ サムネが映らないときは oardefault.jpg を hqdefault.jpg に変えてみてな
+       ============================================ -->
+
+  <div class="section-label">Shorts</div>
+  <div class="section-title">ショート動画📱</div>
+
+  <div class="shorts-grid">
+
+    <!-- ここにショート動画カードを追加してな！(上のテンプレをコピペ) -->
+    <div style="grid-column:1/-1;text-align:center;padding:clamp(32px,6vw,48px) 20px;color:var(--text2);font-size:clamp(.82rem,2vw,.92rem);line-height:2;">
+      <span style="display:block;font-size:2.2rem;margin-bottom:12px;">📱✨</span>
+      ショート動画は準備中やで〜！<br>
+      お楽しみに🐈
+    </div>
+
+  </div>
+
 </main>
 
 <footer>
@@ -251,8 +306,9 @@ document.addEventListener("DOMContentLoaded", function(){
   const titleEl = document.getElementById("videoModalTitle");
   const closeBtn = document.getElementById("videoModalClose");
 
-  function openModal(videoId, title){
+  function openModal(videoId, title, vertical){
     if(!videoId || videoId === "動画ID") return;
+    frame.classList.toggle("vertical", !!vertical);
     frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + videoId +
       '?autoplay=1&rel=0" title="' + (title||"") + '" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
     titleEl.textContent = title || "";
@@ -274,10 +330,24 @@ document.addEventListener("DOMContentLoaded", function(){
     card.style.cursor = "pointer";
     card.addEventListener("click", function(ev){
       ev.preventDefault();
-      openModal(vid, title);
+      openModal(vid, title, false);
     });
     card.addEventListener("keydown", function(e){
-      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openModal(vid, title); }
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openModal(vid, title, false); }
+    });
+  });
+
+  // ショート動画(縦長)カード
+  document.querySelectorAll(".short-card[data-video]").forEach(card => {
+    const vid = card.getAttribute("data-video");
+    const titleNode = card.querySelector(".short-title");
+    const title = titleNode ? titleNode.textContent.trim() : "";
+    card.addEventListener("click", function(ev){
+      ev.preventDefault();
+      openModal(vid, title, true);
+    });
+    card.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openModal(vid, title, true); }
     });
   });
 
@@ -291,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function(){
       if(e.isIntersecting){ e.target.style.opacity="1"; e.target.style.transform="translateY(0)"; obs.unobserve(e.target); }
     });
   },{threshold:.1});
-  document.querySelectorAll(".rec-card").forEach((el,i)=>{
+  document.querySelectorAll(".rec-card, .short-card").forEach((el,i)=>{
     el.style.opacity="0";
     el.style.transform="translateY(18px)";
     el.style.transition="opacity .55s ease, transform .55s ease";
