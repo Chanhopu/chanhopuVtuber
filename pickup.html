@@ -256,7 +256,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
        ──────────────────────────────
        ※ data-video="動画ID" は shorts/動画ID の動画IDの部分だけ！
           例: https://www.youtube.com/shorts/XXXXXXXX → 動画ID = XXXXXXXX
-       ※ サムネが映らないときは oardefault.jpg を hqdefault.jpg に変えてみてな
+       ※ サムネが映らないときは oardefault.jpg を hqdefault.jpg に変える
        ============================================ -->
 
   <div class="section-label">Shorts</div>
@@ -264,12 +264,15 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 
   <div class="shorts-grid">
 
-    <!-- ここにショート動画カードを追加してな！(上のテンプレをコピペ) -->
-    <div style="grid-column:1/-1;text-align:center;padding:clamp(32px,6vw,48px) 20px;color:var(--text2);font-size:clamp(.82rem,2vw,.92rem);line-height:2;">
-      <span style="display:block;font-size:2.2rem;margin-bottom:12px;">📱✨</span>
-      ショート動画は準備中やで〜！<br>
-      お楽しみに🐈
-    </div>
+    <!-- ここにショート動画カードを追加 (上のテンプレをコピペ) -->
+       <div class="short-card" data-video="WMeEzmFvk8g" data-vertical="1" role="button" tabindex="0">
+         <div class="short-thumb-wrap">
+           <img src="https://img.youtube.com/vi/WMeEzmFvk8g/oardefault.jpg" alt="足元には気を付けよう！" class="short-thumb">
+           <div class="short-badge">Shorts</div>
+           <div class="short-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+           <div class="short-title">ショートのタイトル</div>
+         </div>
+       </div>
 
   </div>
 
