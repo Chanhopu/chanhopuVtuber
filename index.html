@@ -7,6 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>ちゃんほぷ | VTuber</title>
+<link rel="icon" type="image/png" href="./chanhopu.png">
+<link rel="apple-touch-icon" href="./chanhopu.png">
 <meta name="google-site-verification" content="SYfVY8a-7TFFMNsdDwGX4yxSR9zZ2QyxpRs5as6mmJ4" />
 <!-- 構造化データ (JSON-LD) : Googleにちゃんほぷの情報を明確に伝える -->
 <script type="application/ld+json">
@@ -241,9 +243,66 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 .faq-banner:hover .faq-banner-arrow{transform:translateX(6px);}
 @media(max-width:600px){.faq-banner-arrow{display:none;}}
 
+
+/* ── ライトモード (パステルピンク) ── */
+[data-theme="light"]{
+  --bg:#fdf4f8;--bg2:#faeef4;--surface:#ffffff;--surface2:#fbe9f1;
+  --accent1:#b57fc9;--accent2:#5fbfa5;--accent3:#e89bb8;
+  --text:#3a2c3f;--text2:#8a7a8f;
+  --border:rgba(181,127,201,0.2);--glow:rgba(181,127,201,0.22);
+}
+[data-theme="light"] body::before{opacity:.015;}
+[data-theme="light"] .hero-name span,[data-theme="light"] .page-title{filter:saturate(1.1);}
+[data-theme="light"] nav{background:linear-gradient(to bottom,rgba(253,244,248,.95),transparent);}
+[data-theme="light"] .nav-drawer{background:rgba(253,244,248,.97);}
+[data-theme="light"] .video-modal{background:rgba(250,238,244,.85);}
+/* テーマ切替ボタン */
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:100px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--accent1);font-size:1.1rem;transition:all .25s;-webkit-tap-highlight-color:transparent;flex-shrink:0;padding:0;}
+.theme-toggle:hover{border-color:var(--accent1);transform:scale(1.08);}
+
+
+/* ── LIVE 通知バナー ── */
+#live-banner{position:fixed;top:0;left:0;right:0;z-index:250;background:linear-gradient(90deg,#ff3b5c,#fc4c76,#ff3b5c);background-size:200% 100%;animation:liveShimmer 3s linear infinite;padding:calc(8px + var(--safe-top)) 16px 8px;display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;box-shadow:0 4px 20px rgba(252,76,118,.35);}
+@keyframes liveShimmer{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+#live-banner .live-dot{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;animation:livePulse 1.2s ease-in-out infinite;flex-shrink:0;}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+#live-banner .live-label{font-weight:900;font-size:.72rem;letter-spacing:.15em;color:#fff;background:rgba(0,0,0,.2);padding:3px 10px;border-radius:100px;flex-shrink:0;}
+#live-banner .live-text{color:#fff;font-size:clamp(.72rem,2vw,.85rem);font-weight:700;letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#live-banner .live-arrow{color:#fff;font-size:.9rem;flex-shrink:0;transition:transform .2s;}
+#live-banner:hover .live-arrow{transform:translateX(4px);}
+/* バナー表示時はnavを押し下げる */
+body.has-live-banner nav{top:var(--live-banner-h,44px);}
+
+
+/* ── タグ一覧セクション ── */
+.tags-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:16px;}
+.tag-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:clamp(18px,3vw,24px);text-decoration:none;transition:all .3s;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;}
+.tag-card:hover,.tag-card:active{transform:translateY(-3px);box-shadow:0 10px 28px rgba(200,162,216,.1);}
+.tag-card-name{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:clamp(.95rem,2.4vw,1.15rem);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.tag-card-name .tag-arrow{margin-left:auto;font-size:.85rem;color:var(--text2);transition:transform .2s;}
+.tag-card:hover .tag-arrow{transform:translateX(4px);}
+.tag-card-desc{font-size:clamp(.72rem,1.8vw,.8rem);color:var(--text2);line-height:1.7;}
+.tag-card.t1{border-color:rgba(200,162,216,.35);}.tag-card.t1 .tag-card-name{color:var(--accent1);}
+.tag-card.t2{border-color:rgba(168,216,200,.35);}.tag-card.t2 .tag-card-name{color:var(--accent2);}
+.tag-card.t3{border-color:rgba(240,192,208,.35);}.tag-card.t3 .tag-card-name{color:var(--accent3);}
+
 </style>
 </head>
 <body>
+
+<!-- ============================================
+     🔴 LIVE通知バナー
+     配信中のときだけ表示したい場合：下の style="display:none;" を消す
+     配信してないときに隠す場合：style="display:none;" を付ける
+     href="..." のリンク先を配信URLに変えてな！
+     ============================================ -->
+<a href="https://www.youtube.com/@chanhopu/live" target="_blank" rel="noopener" id="live-banner" style="display:none;">
+  <span class="live-dot"></span>
+  <span class="live-label">● LIVE</span>
+  <span class="live-text">配信中やで〜！見に来てな🐈✨</span>
+  <span class="live-arrow">→</span>
+</a>
+
 
 <nav id="nav">
   <a href="#hero" class="nav-logo"><img src="./logo.png" alt="ちゃんほぷ"></a>
@@ -255,6 +314,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
     <li><a href="./faq.html">FAQ</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="テーマ切り替え" title="ライト/ダーク切替">🌙</button>
   <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -460,6 +520,43 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 
 <div class="divider"></div>
 
+<!-- TAGS -->
+<section id="tags" style="background:var(--bg);padding:clamp(48px,8vw,80px) clamp(20px,10vw,10vw);">
+  <div class="section-label">Hashtags</div>
+  <div class="section-title">応援タグ</div>
+  <p style="color:var(--text2);font-size:clamp(.82rem,2vw,.92rem);line-height:1.9;margin-bottom:clamp(28px,5vw,40px);max-width:600px;">
+    Xで投稿するときに使ってな〜！タグをクリックすると、みんなの投稿が見られるで🐈✨
+  </p>
+  <div class="tags-grid">
+    <a href="https://x.com/search?q=%23ちゃんほぷ&src=typed_query" target="_blank" rel="noopener" class="tag-card t1">
+      <div class="tag-card-name">#ちゃんほぷ <span class="tag-arrow">→</span></div>
+      <div class="tag-card-desc">なんでもOK！ちゃんほぷ関連の総合タグ</div>
+    </a>
+    <a href="https://x.com/search?q=%23ほぷライブ&src=typed_query" target="_blank" rel="noopener" class="tag-card t2">
+      <div class="tag-card-name">#ほぷライブ <span class="tag-arrow">→</span></div>
+      <div class="tag-card-desc">配信の実況・感想はこのタグで！</div>
+    </a>
+    <a href="https://x.com/search?q=%23ほぷちゃログ&src=typed_query" target="_blank" rel="noopener" class="tag-card t3">
+      <div class="tag-card-name">#ほぷちゃログ <span class="tag-arrow">→</span></div>
+      <div class="tag-card-desc">日常・雑談ツイートに使ってな</div>
+    </a>
+    <a href="https://x.com/search?q=%23ちゃんほぷコレ見てぇ&src=typed_query" target="_blank" rel="noopener" class="tag-card t1">
+      <div class="tag-card-name">#ちゃんほぷコレ見てぇ <span class="tag-arrow">→</span></div>
+      <div class="tag-card-desc">おすすめしたいもの・共有したいこと🐾</div>
+    </a>
+    <a href="https://x.com/search?q=%23ちゃんほぷ美術館&src=typed_query&f=top" target="_blank" rel="noopener" class="tag-card t2">
+      <div class="tag-card-name">#ちゃんほぷ美術館 <span class="tag-arrow">→</span></div>
+      <div class="tag-card-desc">ファンアートはこちら！🎨</div>
+    </a>
+    <a href="https://x.com/search?q=%23ちゃんほぷ裏美術館&src=typed_query&f=top" target="_blank" rel="noopener" class="tag-card t3">
+      <div class="tag-card-name">#ちゃんほぷ裏美術館 <span class="tag-arrow">→</span></div>
+      <div class="tag-card-desc">センシティブ作品用（※要ゾーニング）</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section id="gallery">
   <div class="section-label">Gallery</div>
   <div class="section-title">ちゃんほぷ美術館</div>
@@ -505,6 +602,39 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:clamp(40p
 </footer>
 
 <script>
+
+// ── テーマ切り替え (ライト/ダーク) ──
+(function(){
+  const toggle = document.getElementById("themeToggle");
+  const root = document.documentElement;
+  // 初期テーマは端末設定に従う（保存はしない：localStorageはこの環境で不可）
+  function setTheme(mode){
+    if(mode === "light"){ root.setAttribute("data-theme","light"); if(toggle) toggle.textContent = "☀️"; }
+    else { root.removeAttribute("data-theme"); if(toggle) toggle.textContent = "🌙"; }
+  }
+  // OSがライト設定ならライトで開始
+  const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+  setTheme(prefersLight ? "light" : "dark");
+  if(toggle){
+    toggle.addEventListener("click", ()=>{
+      const isLight = root.getAttribute("data-theme") === "light";
+      setTheme(isLight ? "dark" : "light");
+    });
+  }
+})();
+
+// ── LIVEバナー表示時のnav位置調整 ──
+(function(){
+  const banner = document.getElementById("live-banner");
+  if(banner && banner.style.display !== "none"){
+    document.body.classList.add("has-live-banner");
+    function setH(){ document.documentElement.style.setProperty("--live-banner-h", banner.offsetHeight + "px"); }
+    setH();
+    window.addEventListener("resize", setH);
+  }
+})();
+
+
 // Hamburger menu
 const hamburger = document.getElementById("hamburger");
 const drawer    = document.getElementById("drawer");

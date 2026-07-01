@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>ページが見つからへん | ちゃんほぷ</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="./chanhopu.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=DM+Serif+Display&family=Noto+Sans+JP:wght@200;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d12;--bg2:#13131c;--surface:#1a1a28;--accent1:#c8a2d8;--accent2:#a8d8c8;--accent3:#f0c0d0;--text:#e8e4f0;--text2:#9890b0;--border:rgba(200,162,216,0.18);--safe-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:"Noto Sans JP",sans-serif;font-weight:200;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;overflow:hidden;position:relative;-webkit-font-smoothing:antialiased;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 40%,rgba(200,162,216,.12),transparent 60%),radial-gradient(ellipse 40% 50% at 70% 70%,rgba(168,216,200,.08),transparent 55%);pointer-events:none;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-18px) scale(1.03);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.nf{position:relative;z-index:1;max-width:520px;animation:fadeUp .8s ease both;}
+.nf-cat{font-size:clamp(4rem,15vw,7rem);animation:float 5s ease-in-out infinite;display:block;margin-bottom:12px;}
+.nf-code{font-family:"DM Serif Display",serif;font-size:clamp(3.5rem,14vw,6rem);line-height:1;background:linear-gradient(135deg,var(--accent1),var(--accent3),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;}
+.nf-title{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:clamp(1.3rem,4vw,1.9rem);margin-bottom:16px;}
+.nf-text{font-size:clamp(.85rem,2.2vw,.95rem);color:var(--text2);line-height:2;margin-bottom:36px;}
+.nf-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:100px;background:var(--accent1);color:#0d0d12;text-decoration:none;font-size:clamp(.75rem,1.8vw,.85rem);font-weight:700;letter-spacing:.08em;transition:all .25s;-webkit-tap-highlight-color:transparent;}
+.nf-btn:hover{background:transparent;color:var(--accent1);box-shadow:0 0 24px rgba(200,162,216,.3);border:1px solid var(--accent1);}
+</style>
+</head>
+<body>
+  <div class="nf">
+    <span class="nf-cat">🐈💦</span>
+    <div class="nf-code">404</div>
+    <div class="nf-title">ページが見つからへん…！</div>
+    <div class="nf-text">
+      あれ〜？このページ、どっか行ってしもたみたい🐾<br>
+      URLが間違ってるか、消えてしもたページかも。<br>
+      トップに戻って、もう一回探してみてな！
+    </div>
+    <a href="./index.html" class="nf-btn">🏠 トップへ戻る</a>
+  </div>
+</body>
+</html>
