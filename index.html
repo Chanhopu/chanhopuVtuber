@@ -320,6 +320,13 @@ body.has-live-banner nav{top:var(--live-banner-h,44px);}
 body.opening-active{overflow:hidden;}
 @media(prefers-reduced-motion:reduce){#opening{display:none!important;}body.opening-active{overflow:auto;}}
 
+
+/* プロフィール→キャラ設定リンク */
+.char-link-btn{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(8px,2vw,14px);padding:12px 26px;border-radius:100px;background:transparent;border:1.5px solid var(--border);color:var(--text);text-decoration:none;font-size:clamp(.72rem,1.8vw,.82rem);font-weight:700;letter-spacing:.06em;transition:all .25s;-webkit-tap-highlight-color:transparent;}
+.char-link-btn:hover{border-color:var(--accent1);color:var(--accent1);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,162,216,.12);}
+.char-link-btn .cl-arrow{transition:transform .2s;}
+.char-link-btn:hover .cl-arrow{transform:translateX(4px);}
+
 </style>
 </head>
 <body>
@@ -352,6 +359,7 @@ body.opening-active{overflow:hidden;}
   <ul class="nav-links">
     <li><a href="#profile">About</a></li>
     <li><a href="#links">Links</a></li>
+    <li><a href="./character.html">Character</a></li>
     <li><a href="./pickup.html">Pick Up</a></li>
     <li><a href="#shop">Shop</a></li>
     <li><a href="./faq.html">FAQ</a></li>
@@ -367,6 +375,7 @@ body.opening-active{overflow:hidden;}
   <a href="#hero" class="drawer-link">Home</a>
   <a href="#profile" class="drawer-link">About</a>
   <a href="#links" class="drawer-link">Links</a>
+  <a href="./character.html" class="drawer-link">Character</a>
   <a href="./pickup.html" class="drawer-link">Pick Up</a>
   <a href="#shop" class="drawer-link">Shop</a>
   <a href="./faq.html" class="drawer-link">FAQ</a>
@@ -456,6 +465,9 @@ body.opening-active{overflow:hidden;}
           <a href="https://x.com/search?q=%23%E3%81%BB%E3%81%B7%E3%81%A1%E3%82%83%E3%83%AD%E3%82%B0&src=typed_query" target="_blank" rel="noopener" class="tag" style="border-color:rgba(168,216,200,.4);color:var(--accent2);">#ほぷちゃログ</a>
           <a href="https://x.com/search?q=%23%E3%81%A1%E3%82%83%E3%82%93%E3%81%BB%E3%81%B7%E3%82%B3%E3%83%AC%E8%A6%8B%E3%81%A6%E3%81%87&src=typed_query" target="_blank" rel="noopener" class="tag" style="border-color:rgba(240,192,208,.4);color:var(--accent3);">#ちゃんほぷコレ見てぇ</a>
         </div>
+      </div>
+      <div class="info-block">
+        <a href="./character.html" class="char-link-btn">🐈 キャラクター設定・3面図を見る <span class="cl-arrow">→</span></a>
       </div>
     </div>
   </div>
